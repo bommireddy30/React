@@ -14,3 +14,12 @@
   background-color: #fbb034;
   background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
 }
+.equals {
+  grid-column: 3/5;
+  background-color: rgb(243, 61, 29);
+}
+
+.equals:hover {
+  column-span: 2;
+  background-color: rgb(228, 39, 15);
+}
