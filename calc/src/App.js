@@ -14,11 +14,69 @@ const btnValues = [
 ];
 
 function App() {
-  const [calc, setCalc] = useState({ sign: "", num: 0, res: 0 });
+  const [prevValue, setPrevValue] = useState("");
+  const [curValue, setCurValue] = useState("");
+  const [res, setRes] = useState("0");
+  const [sign, setSign] = useState(null);
+
+  const signHandler = (signReceived) => {
+    console.log(
+      "You are in SignHandler, And the sign is:",
+      typeof signReceived,
+      signReceived
+    );
+  };
+  const inputNumberHandler = (valueReceived) => {
+    console.log(
+      "You are in inputNumberHandler. And the value is:",
+      typeof valueReceived,
+      valueReceived
+    );
+  };
+  const inversionHandler = (inversionReceived) => {
+    console.log(
+      "You are in inversionHandler",
+      typeof inversionReceived,
+      inversionReceived
+    );
+  };
+  const equalsHandler = (hitReceived) => {
+    console.log(
+      "Now you are in EqulasHandler",
+      typeof hitReceived,
+      hitReceived
+    );
+  };
+  const clearScreenHandler = () => {
+    console.log("Hello You are in ClearScreenHandler");
+  };
+
+  const buttonClickHandler = (e) => {
+    const typed = e.target.innerHTML;
+    console.log(typeof typed, isNaN(typed), typed);
+    if (!isNaN(typed)) {
+      inputNumberHandler(typed);
+    } else if (
+      typed === "%" ||
+      typed === "/" ||
+      typed === "X" ||
+      typed === "+" ||
+      typed === "-"
+    ) {
+      signHandler(typed);
+    } else if (typed === "-+") {
+      inversionHandler(typed);
+    } else if (typed === "=") {
+      equalsHandler(typed);
+    } else {
+      clearScreenHandler();
+    }
+  };
+
   return (
     <div className="App">
       <Wrapper>
-        <Screen value="0" value={calc.num ? calc.num : calc.res} />
+        <Screen value={sign ? curValue : prevValue} />
         <ButtonBox>
           {btnValues.flat().map((btn, i) => {
             return (
@@ -26,9 +84,7 @@ function App() {
                 key={i}
                 className={btn === "=" ? "equals" : ""}
                 value={btn}
-                onClick={() => {
-                  console.log(`${btn} clicked!!`);
-                }}
+                onClick={buttonClickHandler}
               ></Buttons>
             );
           })}
