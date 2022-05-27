@@ -14,27 +14,29 @@ const btnValues = [
 ];
 
 function App() {
-  const [prevValue, setPrevValue] = useState("");
-  const [curValue, setCurValue] = useState("");
+  const [inverse, setInverse] = useState("+");
+  const [prevValue, setPrevValue] = useState(inverse + "");
+  const [curValue, setCurValue] = useState(inverse + "");
   const [res, setRes] = useState("0");
+
   const [sign, setSign] = useState(null);
 
   const signHandler = (hitReceived) => {
     setSign(hitReceived);
   };
   const inputNumberHandler = (valueReceived) => {
-    console.log(
-      "You are in inputNumberHandler. And the value is:",
-      typeof valueReceived,
-      valueReceived
-    );
+    if (!sign) {
+      setPrevValue(prevValue + valueReceived);
+    } else {
+      setCurValue(curValue + valueReceived);
+    }
   };
   const inversionHandler = (inversionReceived) => {
-    console.log(
-      "You are in inversionHandler",
-      typeof inversionReceived,
-      inversionReceived
-    );
+    if (!sign) {
+      setPrevValue("-" + prevValue);
+    } else {
+      setCurValue("-" + curValue);
+    }
   };
   const equalsHandler = (hitReceived) => {
     console.log(
