@@ -19,12 +19,8 @@ function App() {
   const [res, setRes] = useState("0");
   const [sign, setSign] = useState(null);
 
-  const signHandler = (signReceived) => {
-    console.log(
-      "You are in SignHandler, And the sign is:",
-      typeof signReceived,
-      signReceived
-    );
+  const signHandler = (hitReceived) => {
+    setSign(hitReceived);
   };
   const inputNumberHandler = (valueReceived) => {
     console.log(
