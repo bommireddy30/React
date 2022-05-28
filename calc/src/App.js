@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Wrapper from "./components/Wrapper";
 import Screen from "./components/Screen";
@@ -14,16 +14,18 @@ const btnValues = [
 ];
 
 function App() {
-  const [inverse, setInverse] = useState("+");
-  const [prevValue, setPrevValue] = useState(inverse + "");
-  const [curValue, setCurValue] = useState(inverse + "");
+  const [isPositive, setIsPositive] = useState(false);
+  const [prevValue, setPrevValue] = useState("");
+  const [curValue, setCurValue] = useState("");
   const [res, setRes] = useState("0");
-
   const [sign, setSign] = useState(null);
 
   const signHandler = (hitReceived) => {
-    setSign(hitReceived);
+    if (curValue) {
+      setSign(hitReceived);
+    }
   };
+
   const inputNumberHandler = (valueReceived) => {
     if (!sign) {
       setPrevValue(prevValue + valueReceived);
@@ -31,20 +33,16 @@ function App() {
       setCurValue(curValue + valueReceived);
     }
   };
-  const inversionHandler = (inversionReceived) => {
+
+  useEffect(() => {
     if (!sign) {
-      setPrevValue("-" + prevValue);
+      setPrevValue(-1 * Number(prevValue));
     } else {
-      setCurValue("-" + curValue);
+      setCurValue(-1 * Number(curValue));
     }
-  };
-  const equalsHandler = (hitReceived) => {
-    console.log(
-      "Now you are in EqulasHandler",
-      typeof hitReceived,
-      hitReceived
-    );
-  };
+  }, [isPositive]);
+
+  const equalsHandler = (hitReceived) => {};
   const clearScreenHandler = () => {
     console.log("Hello You are in ClearScreenHandler");
   };
@@ -63,7 +61,7 @@ function App() {
     ) {
       signHandler(typed);
     } else if (typed === "-+") {
-      inversionHandler(typed);
+      setIsPositive(!isPositive);
     } else if (typed === "=") {
       equalsHandler(typed);
     } else {
