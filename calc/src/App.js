@@ -14,65 +14,13 @@ const btnValues = [
 ];
 
 function App() {
-  const [isPositive, setIsPositive] = useState(false);
-  const [prevValue, setPrevValue] = useState("");
-  const [curValue, setCurValue] = useState("");
-  const [res, setRes] = useState("0");
-  const [sign, setSign] = useState(null);
-
-  const signHandler = (hitReceived) => {
-    if (curValue) {
-      setSign(hitReceived);
-    }
-  };
-
-  const inputNumberHandler = (valueReceived) => {
-    if (!sign) {
-      setPrevValue(prevValue + valueReceived);
-    } else {
-      setCurValue(curValue + valueReceived);
-    }
-  };
-
-  useEffect(() => {
-    if (!sign) {
-      setPrevValue(-1 * Number(prevValue));
-    } else {
-      setCurValue(-1 * Number(curValue));
-    }
-  }, [isPositive]);
-
-  const equalsHandler = (hitReceived) => {};
-  const clearScreenHandler = () => {
-    console.log("Hello You are in ClearScreenHandler");
-  };
-
   const buttonClickHandler = (e) => {
-    const typed = e.target.innerHTML;
-    console.log(typeof typed, isNaN(typed), typed);
-    if (!isNaN(typed)) {
-      inputNumberHandler(typed);
-    } else if (
-      typed === "%" ||
-      typed === "/" ||
-      typed === "X" ||
-      typed === "+" ||
-      typed === "-"
-    ) {
-      signHandler(typed);
-    } else if (typed === "-+") {
-      setIsPositive(!isPositive);
-    } else if (typed === "=") {
-      equalsHandler(typed);
-    } else {
-      clearScreenHandler();
-    }
+    console.log(e.target.innerHTML);
   };
-
   return (
     <div className="App">
       <Wrapper>
-        <Screen value={sign ? curValue : prevValue} />
+        <Screen value={0} />
         <ButtonBox>
           {btnValues.flat().map((btn, i) => {
             return (
