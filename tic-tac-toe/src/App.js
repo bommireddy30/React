@@ -2,9 +2,9 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
+    <main>
+      <h1>Tic tac Toe</h1>
+    </main>
   );
 }
 
