@@ -1,0 +1,7 @@
+.board {
+  border: 5px solid tomato;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: 290px;
+  height: 290px;
+}
