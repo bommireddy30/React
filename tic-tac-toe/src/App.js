@@ -5,6 +5,11 @@ import Square from "./Components/Square";
 const defaultArray = new Array(9).fill("");
 
 function App() {
+  var x = 5;
+  var x;
+
+  console.log(x);
+
   const onClickHandler = (e) => {};
   return (
     <div className="main">
