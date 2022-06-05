@@ -5,7 +5,7 @@ function Button(props) {
       <button className="button" onClick={props.incrementHandler}>
         ++
       </button>
-      <button className="button" onClick={props.resetHandler}>
+      <button className="button reset" onClick={props.resetHandler}>
         Reset
       </button>
       <button className="button" onClick={props.decrementHandler}>
