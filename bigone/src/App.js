@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Button from "./Components/Button";
+import LoginModal from "./Components/LoginModal";
 
 function App() {
+  const [isLoginClicked, setIsLoginClicked] = useState(false);
+
+  const loginHandler = () => {
+    setIsLoginClicked(true);
+  };
+  const overlayClickHanler = () => {
+    setIsLoginClicked(false);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="nav">
+        <div className="navItem">Explore</div>
+        <div className="navItem">Learning Paths</div>
+        <div className="navItem">Contact</div>
+        <Button loginBtnHandler={loginHandler} />
+      </nav>
+
+      {isLoginClicked ? (
+        <LoginModal overlayClickHanler={overlayClickHanler} />
+      ) : null}
     </div>
   );
 }
