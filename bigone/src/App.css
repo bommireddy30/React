@@ -6,13 +6,6 @@ body {
 .App {
   text-align: center;
 }
-.modal {
-  text-align: centergit chec;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .nav {
   display: flex;
   justify-content: flex-end;
