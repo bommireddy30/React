@@ -1,7 +1,7 @@
 import "./Button.css";
 function Button(props) {
   return (
-    <button onClick={props.onClickHandler} className="btn">
+    <button onClick={props.loginBtnHandler} className="btn">
       Login
     </button>
   );
