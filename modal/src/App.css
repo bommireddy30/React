@@ -1,9 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
-
-* {
-  margin: 0px;
-  height: 100%;
-}
 .App {
   text-align: center;
   background-color: gray;
@@ -11,6 +6,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }
 .btn {
   background-color: black;
