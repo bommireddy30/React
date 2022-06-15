@@ -1,38 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&family=Montserrat:wght@100&family=Oswald&family=Tiro+Telugu:ital@1&display=swap");
+
 .App {
   text-align: center;
+  background-image: url("../src/Assets/Header.jpg");
+  height: 200vh;
+  background-size: cover;
+  border-radius: 10px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header--img {
+  width: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 255, 0.204);
+}
+.nav-content {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.logo {
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 65px;
+  border-radius: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-list {
+  margin: 10px;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+}
+.desc {
+  text-align: center;
+  margin-top: 200px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 35px;
 }
