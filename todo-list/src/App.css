@@ -35,4 +35,8 @@ body {
 .todoList {
   font-family: "Bebas Neue", cursive;
   margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
