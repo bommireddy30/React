@@ -8,7 +8,10 @@ function App() {
   const inputTodo = useRef();
 
   const addTodoHandler = () => {
-    setTodo([...todo, inputTodo.current.value]);
+    setTodo([
+      ...todo,
+      { task: inputTodo.current.value, id: Math.floor(Math.random() * 20) },
+    ]);
     inputTodo.current.value = "";
   };
   return (
@@ -25,7 +28,7 @@ function App() {
         </button>
       </Card>
       <div className="todoList">
-        <TodoList todoList={todo} />
+        <TodoList todoList={todo} key={todo} />
       </div>
     </div>
   );
