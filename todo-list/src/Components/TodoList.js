@@ -1,16 +1,23 @@
 import classes from "../Components/Styles/TodoList.module.css";
-import Card from "./Card";
+import { useSelector, useDispatch } from "react-redux";
+import { removeTodo } from "../Redux/CounterSlice";
+
 function TodoList(props) {
-  return props.todoList.map((todoTask) => (
+  const state = useSelector((state) => state.todoRed);
+  const dispatch = useDispatch();
+
+  const deleteHandler = (task, id) => {
+    dispatch(removeTodo({ task: task, id: id }));
+  };
+
+  return state.tasks.map((todoTask) => (
     <div className={classes.listItem} key={todoTask.id}>
       <input
         type="checkbox"
         className={classes.check}
-        onChange={(e) => {
-          props.deleteTask(todoTask.id);
-        }}
+        onChange={() => deleteHandler(todoTask.task, todoTask.id)}
       />
-      <li>{todoTask.task}</li>
+      <li className={classes.task}>{todoTask.task}</li>
     </div>
   ));
 }
