@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import ImageContainer from "./Components/ImageContainer";
 
 function App() {
   const [dogImgSrc, setDogImgSrc] = useState("");
-  const [catImgSrc, setCatImgSrc] = useState("");
-  const [memeNumber, setMemeNumber] = useState(0);
-  const [srcActive, setSrcActive] = useState(false);
+  const [memeImgSrc, setMemeSrc] = useState("");
+  const [memeNumber, setMemeNumber] = useState(null);
+
+  useEffect(() => {
+    console.log("Hey there");
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setMemeSrc(data.data.memes[memeNumber].url));
+  }, [memeNumber]);
 
   const dogClickHandler = () => {
     fetch("https://dog.ceo/api/breeds/image/random/json")
@@ -14,32 +21,13 @@ function App() {
   };
 
   const memeClickHandler = () => {
-    if (memeNumber >= 100) {
-      setMemeNumber(0);
-    } else {
-      setMemeNumber(memeNumber + 1);
-    }
-    fetch("https://api.imgflip.com/get_memes")
-      .then((res) => res.json())
-      .then((data) => setCatImgSrc(data.data.memes[memeNumber].url));
+    setMemeNumber(Math.floor(Math.random() * 100 + 1));
   };
 
   return (
     <div className="App">
-      <div className="container">
-        <button onClick={dogClickHandler} className="btn">
-          Click Here to see a new dog
-        </button>
-        {dogImgSrc ? <img src={dogImgSrc} alt="Dog" className="image" /> : null}
-      </div>
-      <div className="container">
-        <button onClick={memeClickHandler} className="btn">
-          Click Here to see a new meme
-        </button>
-        {catImgSrc ? (
-          <img src={catImgSrc} alt="meme" className="image" />
-        ) : null}
-      </div>
+      <ImageContainer clickHandler={dogClickHandler} imgSrc={dogImgSrc} />
+      <ImageContainer clickHandler={memeClickHandler} imgSrc={memeImgSrc} />
     </div>
   );
 }
