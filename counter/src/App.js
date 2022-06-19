@@ -25,7 +25,7 @@ function App() {
   return (
     <Fragment>
       <Card>
-        <div className="container">
+        <div className="display--container">
           <Display value={reset ? 0 : value}></Display>
         </div>
         <div className="container">
