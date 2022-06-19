@@ -1,9 +1,8 @@
-.star-rating {
-}
 button {
   background-color: transparent;
   border: none;
   outline: none;
+  font-size: 100px;
   cursor: pointer;
 }
 
@@ -14,3 +13,23 @@ button {
 .off {
   color: #000;
 }
+
+@media only screen and (max-width: 786px) {
+  button {
+    font-size: 75px;
+  }
+  .on:hover {
+    color: white;
+  }
+
+  .off:hover {
+    color: black;
+  }
+  .on:active {
+    color: white;
+  }
+
+  .off:active {
+    color: #000;
+  }
+} ;
