@@ -8,7 +8,6 @@ function App() {
   const [memeNumber, setMemeNumber] = useState(null);
 
   useEffect(() => {
-    console.log("Hey there");
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => setMemeSrc(data.data.memes[memeNumber].url));
@@ -26,8 +25,16 @@ function App() {
 
   return (
     <div className="App">
-      <ImageContainer clickHandler={dogClickHandler} imgSrc={dogImgSrc} />
-      <ImageContainer clickHandler={memeClickHandler} imgSrc={memeImgSrc} />
+      <ImageContainer
+        clickHandler={dogClickHandler}
+        imgSrc={dogImgSrc}
+        name={"dog"}
+      />
+      <ImageContainer
+        clickHandler={memeClickHandler}
+        imgSrc={memeImgSrc}
+        name={"meme"}
+      />
     </div>
   );
 }
